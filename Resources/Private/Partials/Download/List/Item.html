@@ -1,0 +1,56 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:section name="Main">
+    <div class="c-content-list__content">
+        <p class="u-typo:x u-typo:bold2 download-type">{f:translate(key: 'download.type.I.{download.type}')}</p>
+
+        <f:if condition="{download.categories->f:count()}">
+            <div class="download-categories">
+                <ul>
+                    <f:for as="category" each="{download.categories}">
+                        <li>{category.title} - ID: {category.uid}</li>
+                    </f:for>
+                </ul>
+            </div>
+        </f:if>
+
+        <div class="download-firstCategory">{download.firstCategory.title}</div>
+
+
+        <div class="download-title">{download.title}</div>
+        <div class="download-teaser">{download.teaser->f:format.html()}</div>
+        <div class="download-accessibility">
+            <f:if condition="{download.accessibility}">
+                <f:then>{f:translate(key: 'download.accessibility.{download.accessibility}')}</f:then>
+                <f:else>{f:translate(key: 'download.accessibility.{download.accessibility}')}</f:else>
+            </f:if>
+        </div>
+        <div class="download-size">{download.size}</div>
+        <div class="download-link">
+            <f:link.typolink parameter="{download.link}">
+                {f:translate(key: 'download')}
+            </f:link.typolink>
+            <br>
+            {f:uri.typolink(parameter: '{download.link}')}
+
+        </div>
+
+        <f:for each="{download.files}" as="file">
+            <p>
+                <span class="news-related-files-link">
+                    <a
+                        href="{file.originalResource.publicUrl -> f:format.htmlspecialchars()}"
+                        target="_blank">
+						{f:if(condition:file.originalResource.title, then:file.originalResource.title, else:file.originalResource.name)}
+					</a>
+				</span>
+                <span class="file-size">{file.originalResource.size -> f:format.bytes()}</span>
+            </p>
+        </f:for>
+
+        <hr>
+    </div>
+</f:section>
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:flexform.tab.settings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.layout>
+                        <TCEforms>
+                            <label>LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:flexform.settings.layout</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:flexform.settings.layout.default</numIndex>
+                                        <numIndex index="1">Default</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:flexform.settings.layout.author_slider</numIndex>
+                                        <numIndex index="1">AuthorSlider</numIndex>
+                                    </numIndex>
+                                </items>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.layout>
+                    <settings.listSelectedDownloads>
+                        <TCEforms>
+                            <label>LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:flexform.settings.listSelectedDownloads</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>tx_cpsdownload_domain_model_download</allowed>
+                                <foreign_table>tx_cpsdownload_domain_model_download</foreign_table>
+                                <minitems>0</minitems>
+                                <maxitems>99</maxitems>
+                                <default>0</default>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.listSelectedDownloads>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

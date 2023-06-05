@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-12-15T02:43:00Z"
+          product-name="cps_download">
+        <header/>
+        <body>
+            <trans-unit id="plugin.download.title">
+                <source>Download</source>
+                <target>Download</target>
+            </trans-unit>
+            <trans-unit id="plugin.download.list.title">
+                <source>Download list</source>
+                <target>Download-Datensätzen Listenansicht</target>
+            </trans-unit>
+            <trans-unit id="plugin.download.list.description">
+                <source>Displays a list of download records in Frontend.</source>
+                <target>Zeigt eine Liste von Download-Datensätzen im Frontend an.</target>
+            </trans-unit>
+            <trans-unit id="plugin.download.list_selected.title">
+                <source>Downloads Lists selected records</source>
+                <target>Download Liste ausgewählter Datensätze</target>
+            </trans-unit>
+            <trans-unit id="plugin.download.list_selected.description">
+                <source>Displays a list of selected Download records in Frontend.</source>
+                <target>Zeigt eine Liste ausgewählter Download-Datensätze im Frontend an.</target>
+            </trans-unit>
+            <trans-unit id="flexform.sheet.general">
+                <source>General</source>
+                <target>Allgemeines</target>
+            </trans-unit>
+            <trans-unit id="flexform.tab.settings">
+                <source>Settings</source>
+                <target>Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="flexform.tab.pages">
+                <source>Pages</source>
+                <target>Seiten</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.maxItems">
+                <source>Number of items per page</source>
+                <target>Anzahl der Elemente pro Seite</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.listSelectedDownloads">
+                <source>Downloads</source>
+                <target>Downloads</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.categoriesList">
+                <source>Categories</source>
+                <target>Kategorien</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.showSearchForm">
+                <source>Show search form</source>
+                <target>Suchformular anzeigen</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.layout">
+                <source>Layout</source>
+                <target>Layout</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.layout.default">
+                <source>List</source>
+                <target>Liste</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.layout.author_slider">
+                <source>Slider</source>
+                <target>Slider</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

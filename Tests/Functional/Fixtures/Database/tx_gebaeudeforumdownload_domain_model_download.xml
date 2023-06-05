@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <tx_cpsdownload_domain_model_download>
+        <uid>1</uid>
+        <pid>1</pid>
+        <title>What's the download?</title>
+        <teaser>Teaser text. What's the download.</teaser>
+        <link>http://www.link.com/</link>
+    </tx_cpsdownload_domain_model_download>
+    <tx_cpsdownload_domain_model_download>
+        <uid>2</uid>
+        <pid>3</pid>
+        <title>What's the answer?</title>
+        <teaser>Teaser text. What's the download.</teaser>
+        <link>http://www.linke-2.com/</link>
+    </tx_cpsdownload_domain_model_download>
+</dataset>

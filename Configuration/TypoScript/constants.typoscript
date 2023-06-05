@@ -1,0 +1,23 @@
+plugin.tx_cpsdownload {
+    view {
+        # cat=plugin.tx_cpsdownload/view/10; type=string; label=Path to template root (FE)
+        templateRootPath =
+        # cat=plugin.tx_cpsdownload/view/20; type=string; label=Path to template layouts (FE)
+        layoutRootPath =
+
+        # include global things like Partial AuthorLink.html:
+        # cat=plugin.tx_cpsdownload/view/30; type=string; label=Path to template partials (FE)
+        partialRootPaths.10 =
+         # cat=plugin.tx_cpsdownload/view/40; type=string; label=Path to template partials (FE)
+        partialRootPaths.20 =
+    }
+
+    settings {
+        # Storage page and subpages
+        # recursive ( 0 | 1 )
+        recursive = 0
+        # depth of recursiveness ( 0... )
+        recursion_depth = 10
+        listPid = 0
+    }
+}

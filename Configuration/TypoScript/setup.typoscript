@@ -1,0 +1,34 @@
+plugin.tx_cpsdownload {
+    view {
+        templateRootPaths {
+            10 = {$plugin.tx_cpsdownload.view.templateRootPath}
+        }
+
+        layoutRootPaths {
+            10 = {$plugin.tx_cpsdownload.view.layoutRootPath}
+        }
+
+        # include global things like Partial AuthorLink.html:
+        partialRootPaths {
+            10 = {$plugin.tx_cpsdownload.view.partialRootPaths.10}
+            20 = {$plugin.tx_cpsdownload.view.partialRootPaths.20}
+        }
+    }
+    settings {
+        # Storage page and subpages
+        recursive = {$plugin.tx_cpsdownload.settings.recursive}
+        recursion_depth = {$plugin.tx_cpsdownload.settings.recursion_depth}
+        listPid = {$plugin.tx_cpsdownload.settings.listPid}
+
+        // Demand
+        authorIds = 0
+        listSelectedDownloads = 0
+        categoriesList =
+    }
+}
+
+plugin.tx_cpsdownload_listselected {
+    settings {
+        layout = Default
+    }
+}

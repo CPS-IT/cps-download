@@ -1,0 +1,22 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+	elements {
+		cps-download-list {
+			iconIdentifier = cps-download
+			title = LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list.title
+			description = LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list.description
+			tt_content_defValues {
+				CType = list
+				list_type = cpsdownload_list
+			}
+		}
+		cps-download-list-seelcted {
+			iconIdentifier = cps-download
+			title = LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list_selected.title
+			description = LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list_selected.description
+			tt_content_defValues {
+				CType = list
+				list_type = cpsdownload_listselected
+			}
+		}
+	}
+}

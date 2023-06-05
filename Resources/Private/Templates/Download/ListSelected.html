@@ -1,0 +1,35 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="{settings.layout}"/>
+
+<f:section name="Main">
+    <f:if condition="{downloads -> f:count()} >= 1">
+        <div class="c-content-list u-space-top:default">
+            <h2>Download list selected</h2>
+            <ul class="c-content-list__list">
+                <f:for each="{downloads}" as="item">
+                    <li class="c-content-list__item">
+                        <f:render partial="Download/List/Item" section="Main" arguments="{download:item}"/>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
+</f:section>
+
+<f:section name="AuthorSlider">
+    <f:if condition="{downloads -> f:count()} >= 1">
+        <div class="c-content-list u-space-top:default">
+            <h2>Download list selected</h2>
+            <ul class="c-content-list__list">
+                <f:for each="{downloads}" as="item">
+                    <li class="c-content-list__item">
+                        <f:render partial="Download/List/Item" section="Main" arguments="{download:item}"/>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
+</f:section>
+
+</html>
