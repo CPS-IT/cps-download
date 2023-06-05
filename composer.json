@@ -17,7 +17,7 @@
   "require": {
     "typo3/cms-core": "^11.5",
     "dwenzel/t3extension-tools": "^2.0",
-    "cpsit/cps-author": ">=0.1.0",
+    "cpsit/cps-author": "^2.0",
     "cps/cps-utility": "^4.0"
   },
   "require-dev": {
