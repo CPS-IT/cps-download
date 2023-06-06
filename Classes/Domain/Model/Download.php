@@ -11,7 +11,7 @@ namespace Cpsit\CpsDownload\Domain\Model;
  * of the License, or any later version.
  */
 
-use Cpsit\GebaeudeforumAuthor\Domain\Model\Author;
+use Cpsit\CpsAuthor\Domain\Model\Author;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
