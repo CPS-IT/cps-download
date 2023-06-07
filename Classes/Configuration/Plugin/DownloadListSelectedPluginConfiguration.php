@@ -10,6 +10,7 @@ namespace Cpsit\CpsDownload\Configuration\Plugin;
  * of the License, or any later version.
  */
 
+use Cpsit\CpsDownload\Controller\DownloadController;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationInterface;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationTrait;
 use Cpsit\CpsDownload\Configuration\Extension;
@@ -28,7 +29,7 @@ class DownloadListSelectedPluginConfiguration implements PluginConfigurationInte
 
     static protected $flexForm = 'FILE:EXT:cps_download/Configuration/FlexForms/DownloadListSelectedPlugin.xml';
     static protected $controllerActions = [
-        'Download' => 'listSelected'
+        DownloadController::class => 'listSelected'
     ];
 
     static protected $nonCacheableControllerActions = [];
