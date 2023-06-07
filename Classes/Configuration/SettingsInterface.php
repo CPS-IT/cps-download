@@ -17,9 +17,9 @@ namespace Cpsit\CpsDownload\Configuration;
 interface SettingsInterface
 {
     public const ICON_IDENTIFIER_DOWNLOAD = 'cps-download';
-    public const ICON_IDENTIFIER_EXT_DOWNLOAD = 'gebaeudeforum-ext-download';
-    public const ICON_IDENTIFIER_FILE_DOWNLOAD = 'gebaeudeforum-files-download';
-    public const ICON_IDENTIFIER_LINK_DOWNLOAD = 'gebaeudeforum-link-download';
+    public const ICON_IDENTIFIER_EXT_DOWNLOAD = 'cps-ext-download';
+    public const ICON_IDENTIFIER_FILE_DOWNLOAD = 'cps-files-download';
+    public const ICON_IDENTIFIER_LINK_DOWNLOAD = 'cps-link-download';
 
     public const FE_CACHE_TAG_DOWNLOAD = 'download';
     public const VIEW_VAR_DOWNLOADS = 'downloads';

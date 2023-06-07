@@ -317,13 +317,13 @@ return [
         ],
 
         'author' => [
-            'label' => 'LLL:EXT:cps_author/Resources/Private/Language/locallang_db.xlf:tx_gebaeudeforumauthor_domain_model_author.title',
+            'label' => 'LLL:EXT:cps_author/Resources/Private/Language/locallang_db.xlf:tx_cpsauthor_domain_model_author.title',
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
-                'allowed' => 'tx_gebaeudeforumauthor_domain_model_author',
+                'allowed' => 'tx_cpsauthor_domain_model_author',
                 'maxitems' => 1,
                 'minitems' => 0,
                 'size' => 1,

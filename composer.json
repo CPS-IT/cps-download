@@ -1,17 +1,17 @@
 {
   "name": "cpsit/cps-download",
   "description": "Downloads. This package is an extension to the TYPO3 system.",
-  "homepage": "https://git.dena.de/ventures/gebaeudeforum.de/cps_download",
+  "homepage": "https://github.com/CPS-IT/cps-download",
   "license": "GPL-2.0-or-later",
   "type": "typo3-cms-extension",
   "repositories": {
-    "gebaeudeforum-author": {
+    "cps-author": {
       "type": "vcs",
-      "url": "git@git.dena.de:ventures/gebaeudeforum.de/gebaeudeforum-author.git"
+      "url": "git@github.com:CPS-IT/cps-author.git"
     },
     "cps-utility": {
       "type": "vcs",
-      "url": "git@git.dena.de:common/components/cps-utility.git"
+      "url": "git@github.com:CPS-IT/cps-utility.git"
     }
   },
   "require": {
