@@ -24,7 +24,7 @@ class DownloadTest extends TestCase
      */
     protected $subject;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->subject = new Download();
     }
