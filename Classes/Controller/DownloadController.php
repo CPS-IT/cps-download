@@ -16,6 +16,7 @@ use Cpsit\CpsDownload\Configuration\SettingsInterface as SI;
 use Cpsit\CpsDownload\Domain\Model\Dto\DemandInterface;
 use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
 use Cpsit\CpsDownload\Domain\Repository\DownloadRepository;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
@@ -42,29 +43,27 @@ class DownloadController extends ActionController
         $this->downloadRepository = $repository;
     }
 
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->addCacheTags([SI::FE_CACHE_TAG_DOWNLOAD]);
         $this->settings = $this->parseTypoScriptStdWrap($this->settings);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function initializeView(ViewInterface $view)
+    protected function prepareView(): void
     {
-        $view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
+        $this->view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
         if (is_object($GLOBALS['TSFE'])) {
-            $view->assign('pageData', $GLOBALS['TSFE']->page);
+            $this->view->assign('pageData', $GLOBALS['TSFE']->page);
         }
-        parent::initializeView($view);
     }
 
-    public function listAction(): void
+    public function listAction(): ResponseInterface
     {
         $demand = $this->createDemandFromSettings();
 
         $downloads = $this->downloadRepository->findDemanded($demand);
+
+        $this->prepareView();
 
         $variables = [
             SI::VIEW_VAR_DOWNLOADS => $downloads,
@@ -73,15 +72,19 @@ class DownloadController extends ActionController
         $this->view->assignMultiple(
             $variables
         );
+
+        return $this->htmlResponse();
     }
 
-    public function listSelectedAction(): void
+    public function listSelectedAction(): ResponseInterface
     {
         /** @var DownloadDemand $demand */
         $demand = $this->createDemandFromSettings();
 
         $downloads = $this->downloadRepository->findByUidList($demand->getDownloadIds());
 
+        $this->prepareView();
+
         $variables = [
             SI::VIEW_VAR_DOWNLOADS => $downloads,
         ];
@@ -89,6 +92,7 @@ class DownloadController extends ActionController
         $this->view->assignMultiple(
             $variables
         );
+        return $this->htmlResponse();
     }
 
     /**
@@ -126,7 +130,6 @@ class DownloadController extends ActionController
         /** @var PageUtility $pageUtility */
         $pageUtility = GeneralUtility::makeInstance(PageUtility::class);
         $recursiveDepth = (int)($this->settings['recursion_depth'] ?? self::RECURSIVE_DEPTH_DEFAULT);
-        /* depth ( int 0... ) and recursion ( int-like-boolean 0 | 1 ) mixed up, resolved */
-        return $pageUtility->resolveStoragePages(/*storagePages:*/ $this->settings['listPid'], /*depth:*/ $recursiveDepth);
+        return $pageUtility->resolveStoragePages($this->settings['listPid'], $recursiveDepth);
     }
 }
