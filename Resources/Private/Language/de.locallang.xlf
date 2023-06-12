@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-12-15T02:43:00Z"
+          product-name="cps_download">
+        <header/>
+        <body>
+            <trans-unit id="download">
+                <source>download</source>
+                <target>herunterladen</target>
+            </trans-unit>
+            <trans-unit id="download.type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="download.type.I.0">
+                <source>File Download</source>
+                <target>Datei Download</target>
+            </trans-unit>
+            <trans-unit id="download.type.I.1">
+                <source>External File Download</source>
+                <target>Externe Datei Download</target>
+            </trans-unit>
+            <trans-unit id="download.type.I.2">
+                <source>Link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="download.title">
+                <source>Downloads</source>
+                <target>Downloads</target>
+            </trans-unit>
+            <trans-unit id="download.teaser">
+                <source>Teaser</source>
+                <target>Teaser</target>
+            </trans-unit>
+            <trans-unit id="download.accessibility">
+                <source>Accessibility</source>
+                <target>Barrierefrei</target>
+            </trans-unit>
+            <trans-unit id="download.accessibility.0">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="download.accessibility.1">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="download.categories">
+                <source>Category</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="download.link">
+                <source>Link</source>
+                <target>URL</target>
+            </trans-unit>
+            <trans-unit id="download.size">
+                <source>Size</source>
+                <target>Größe</target>
+            </trans-unit>
+            <trans-unit id="download.file_ext">
+                <source>File extension</source>
+                <target>Dateityp</target>
+            </trans-unit>
+            <trans-unit id="download.information_date">
+                <source>updated</source>
+                <target>Stand</target>
+            </trans-unit>
+            <trans-unit id="download.files">
+                <source>File</source>
+                <target>Datei</target>
+            </trans-unit>
+            <trans-unit id="all">
+                <source>all</source>
+                <target>alle</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
