@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 $tableName = \Cpsit\CpsDownload\Domain\Model\Download::TABLE_NAME;
 $extensionKey = \Cpsit\CpsDownload\Configuration\Extension::KEY;

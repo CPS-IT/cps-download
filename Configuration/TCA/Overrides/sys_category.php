@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 
 $GLOBALS['TCA']['sys_category']['columns']['items']['config']['MM_oppositeUsage']['tx_cpsdownload_domain_model_download']
