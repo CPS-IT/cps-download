@@ -7,7 +7,7 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'CPS Gmbh',
     'author_email' => 'v.falcon@familie-redlich.de',
     'author_company' => 'CPS GmbH',
-    'version' => '1.0.1',
+    'version' => '1.0.2',
     'constraints' =>
         [
             'depends' =>
