@@ -35,10 +35,7 @@ return [
         'useColumnsForDefaultValues' => 'type',
 
     ],
-    'interface' => [
-        'showRecordFieldList' => 'cruser_id,pid,sys_language_uid,l10n_parent,l10n_diffsource, ' .
-            'hidden,starttime,endtime,type,title,teaser,categories,accessibility,size,link,file,information_date',
-    ],
+    'interface' => [],
     'columns' => [
         'hidden' => [
             'exclude' => true,
@@ -85,7 +82,6 @@ return [
             ],
         ],
         'l10n_parent' => [
-            'exclude' => true,
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
@@ -106,17 +102,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'all languages',
-                        -1,
-                        'flags-multiple',
-                    ],
-                ],
-                'default' => 0,
+                'type' => 'language',
             ],
         ],
         'l10n_diffsource' => [
