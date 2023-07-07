@@ -304,7 +304,6 @@ return [
                 implode(',', Cpsit\CpsDownload\Domain\Model\Download::ALLOWED_FILE_FILE_EXTENSIONS)
             )
         ],
-
         'size' => [
             'exclude' => true,
             'label' => $ll . $tableName . '.size',
@@ -315,7 +314,6 @@ return [
                 'max' => 10,
             ],
         ],
-
         'author' => [
             'label' => 'LLL:EXT:cps_author/Resources/Private/Language/locallang_db.xlf:tx_cpsauthor_domain_model_author.title',
             'l10n_mode' => 'exclude',
@@ -345,7 +343,38 @@ return [
                     ]
                 ]
             ]
-        ]
+        ],
+        'categories' => [
+            'exclude' => false,
+            'l10n_mode' => 'exclude',
+            'label' => $ll . 'download.categories',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectTree',
+                'minitems' => 0,
+                'maxitems' => 99,
+                'foreign_table' => 'sys_category',
+                'foreign_table_where' => ' AND {#sys_category}.{#sys_language_uid} IN (-1, 0)
+                    ORDER BY sys_category.sorting',
+                'MM' => 'sys_category_record_mm',
+                'MM_opposite_field' => 'items',
+                'MM_match_fields' => [
+                    'fieldname' => 'categories',
+                    'tablenames' => \Cpsit\CpsDownload\Domain\Model\Download::TABLE_NAME,
+                ],
+                'treeConfig' => [
+                    'parentField' => 'parent',
+                    'appearance' => [
+                        'maxLevels' => 1,
+                        'nonSelectableLevels' => '0',
+                        'expandAll' => false
+                    ]
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ]
+        ],
     ],
     'types' => [
         '0' => [
