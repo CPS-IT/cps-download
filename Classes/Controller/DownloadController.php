@@ -11,6 +11,7 @@ namespace Cpsit\CpsDownload\Controller;
  * of the License, or any later version.
  */
 
+use Cpsit\CpsDownload\Service\PageService;
 use Cpsit\CpsUtility\Traits\FeCacheTagsTrait;
 use Cpsit\CpsDownload\Configuration\SettingsInterface as SI;
 use Cpsit\CpsDownload\Domain\Model\Dto\DemandInterface;
@@ -51,7 +52,7 @@ class DownloadController extends ActionController
 
     protected function prepareView(): void
     {
-        $this->view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
+        $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
         if (is_object($GLOBALS['TSFE'])) {
             $this->view->assign('pageData', $GLOBALS['TSFE']->page);
         }

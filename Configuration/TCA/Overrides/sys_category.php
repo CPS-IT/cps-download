@@ -16,7 +16,6 @@ $downloadsSysCategoryColumns = [
         'config' => [
             'type' => 'group',
             'size' => 5,
-            'internal_type' => 'db',
             'allowed' => 'tx_cpsdownload_domain_model_download',
             'foreign_table' => 'tx_cpsdownload_domain_model_download',
             'MM' => 'sys_category_record_mm',

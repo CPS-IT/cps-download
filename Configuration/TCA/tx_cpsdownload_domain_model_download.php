@@ -13,7 +13,6 @@ return [
         'sortby' => 'sorting',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'delete' => 'deleted',
         'transOrigPointerField' => 'l10n_parent',
         'translationSource' => 'l10n_source',
@@ -35,7 +34,6 @@ return [
         'useColumnsForDefaultValues' => 'type',
 
     ],
-    'interface' => [],
     'columns' => [
         'hidden' => [
             'exclude' => true,
@@ -45,8 +43,7 @@ return [
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
-                        0 => '',
-                        1 => '',
+                        'label' => '',
                         'invertStateDisplay' => true,
                     ],
                 ],
@@ -56,9 +53,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
+                'type' => 'datetime',
                 'default' => 0,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
@@ -69,9 +64,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
+                'type' => 'datetime',
                 'default' => 0,
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038),
@@ -89,8 +82,8 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        '',
-                        0,
+                        'label' => '',
+                        'value' => 0,
                     ],
                 ],
                 'foreign_table' => $tableName,
@@ -130,19 +123,19 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        $ll . $tableName . '.type.I.0',
-                        0,
-                        \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_FILE_DOWNLOAD
+                        'label' => $ll . $tableName . '.type.I.0',
+                        'value' => 0,
+                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_FILE_DOWNLOAD
                     ],
                     [
-                        $ll . $tableName . '.type.I.1',
-                        1,
-                        \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_EXT_DOWNLOAD
+                        'label' => $ll . $tableName . '.type.I.1',
+                        'value' => 1,
+                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_EXT_DOWNLOAD
                     ],
                     [
-                        $ll . $tableName . '.type.I.2',
-                        2,
-                        \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_LINK_DOWNLOAD
+                        'label' => $ll . $tableName . '.type.I.2',
+                        'value' => 2,
+                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_LINK_DOWNLOAD
                     ],
                 ],
                 'fieldWizard' => [
@@ -163,7 +156,7 @@ return [
                 'type' => 'input',
                 'size' => 60,
                 'max' => 255,
-                'eval' => 'required',
+                'required' => true,
             ]
         ],
         'teaser' => [
@@ -183,12 +176,6 @@ return [
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                    ]
-                ],
                 'behaviour' => [
                     'allowLanguageSynchronization' => true
                 ]
@@ -199,19 +186,9 @@ return [
             'exclude' => true,
             'label' => $ll . $tableName . '.link',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
+                'type' => 'link',
                 'size' => 50,
-                'max' => 1024,
-                'eval' => 'trim',
-                'fieldControl' => [
-                    'linkPopup' => [
-                        'options' => [
-                            'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
-                        ],
-                    ],
-                ],
-                'softref' => 'typolink'
+                'appearance' => ['browserTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel']
             ]
         ],
 
@@ -222,7 +199,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', '']
+                    ['label' => '', 'value' => '']
                 ],
                 'itemsProcFunc' => \Cpsit\CpsDownload\UserFunctions\SelectItemsProcFunctions::class . '->downloadFileExtensions',
                 'fieldWizard' => [
@@ -239,20 +216,22 @@ return [
             'exclude' => false,
             'label' => $ll . $tableName . '.information_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'date,int',
+                'type' => 'datetime',
                 'default' => 0,
                 'required' => false,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
+                'format' => 'date',
             ],
         ],
 
         'files' => [
             'label' => $ll . $tableName . '.files',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('files', [
+            'config' => [
+                ### !!! Watch out for fieldName different from columnName
+                'type' => 'file',
+                'allowed' => implode(',', Cpsit\CpsDownload\Domain\Model\Download::ALLOWED_FILE_FILE_EXTENSIONS),
                 'maxitems' => 1,
                 'minitems' => 1,
                 'appearance' => [
@@ -286,9 +265,7 @@ return [
                         ]
                     ],
                 ],
-            ],
-                implode(',', Cpsit\CpsDownload\Domain\Model\Download::ALLOWED_FILE_FILE_EXTENSIONS)
-            )
+            ]
         ],
         'size' => [
             'exclude' => true,
@@ -306,7 +283,6 @@ return [
             'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tx_cpsauthor_domain_model_author',
                 'maxitems' => 1,
                 'minitems' => 0,
