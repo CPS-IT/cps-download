@@ -77,7 +77,7 @@ class DownloadRepository extends Repository
             foreach ($categories as $category) {
                 $categoryConstraint[] = $query->contains(Download::FIELD_CATEGORIES, $category);
             }
-            $constraints[] = $query->logicalOr($categoryConstraint);
+            $constraints[] = $query->logicalOr(...$categoryConstraint);
         }
 
         if (!empty($authors = $demand->getAuthorIds())) {
@@ -86,7 +86,7 @@ class DownloadRepository extends Repository
 
         if(!empty($constraints)){
             $query->matching(
-                $query->logicalAnd($constraints)
+                $query->logicalAnd(...$constraints)
             );
         }
 
