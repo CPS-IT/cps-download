@@ -110,7 +110,7 @@ class DownloadController extends ActionController
         }
 
         if (!empty($this->settings['authorIds'])) {
-            $demand->setAuthorIds(GeneralUtility::intExplode(',', $this->settings['authorIds']));
+            $demand->setAuthorIds(GeneralUtility::trimExplode(',', $this->settings['authorIds']));
         }
 
         if (!empty($this->settings['categoriesList'])) {
