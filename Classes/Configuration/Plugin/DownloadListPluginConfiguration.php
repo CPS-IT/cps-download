@@ -14,24 +14,29 @@ use Cpsit\CpsDownload\Controller\DownloadController;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationInterface;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationTrait;
 use Cpsit\CpsDownload\Configuration\Extension;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 /**
  * Class DownloadListPluginConfiguration
  * Provides configuration for the Download
  */
+#[AutoconfigureTag('t3extensionTools.pluginConfiguration')]
+#[AutoconfigureTag('t3extensionTools.pluginRegistration')]
 class DownloadListPluginConfiguration implements PluginConfigurationInterface
 {
     use PluginConfigurationTrait;
 
-    static protected $pluginName = 'List';
-    static protected $pluginSignature = 'cpsdownload_list';
-    static protected $pluginTitle = 'LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list.title';
-
-    static protected $flexForm = 'FILE:EXT:cps_download/Configuration/FlexForms/DownloadListPlugin.xml';
-    static protected $controllerActions = [
+    protected string $extensionName = Extension::KEY;
+    protected string $pluginName = 'List';
+    protected string $pluginSignature = 'cpsdownload_list';
+    protected string $pluginTitle = 'LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list.title';
+    protected string $pluginDescription = 'Plugin for Download List';
+    protected string $pluginGroup = 'plugins';
+    protected string $pluginType = ExtensionUtility::PLUGIN_TYPE_PLUGIN;
+    protected string $flexForm = 'FILE:EXT:cps_download/Configuration/FlexForms/DownloadListPlugin.xml';
+    protected array $controllerActions = [
         DownloadController::class => 'list'
     ];
-
-    static protected $nonCacheableControllerActions = [];
-    static protected $vendorExtensionName = Extension::KEY;
+    protected array $nonCacheableControllerActions = [];
 }

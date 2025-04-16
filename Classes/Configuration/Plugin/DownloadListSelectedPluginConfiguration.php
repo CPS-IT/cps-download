@@ -14,24 +14,31 @@ use Cpsit\CpsDownload\Controller\DownloadController;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationInterface;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationTrait;
 use Cpsit\CpsDownload\Configuration\Extension;
+use DWenzel\T3extensionTools\Configuration\PluginRegistrationTrait;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 /**
  * Class DownloadListPluginConfiguration
  * Provides configuration for the Download
  */
+#[AutoconfigureTag('t3extensionTools.pluginConfiguration')]
+#[AutoconfigureTag('t3extensionTools.pluginRegistration')]
 class DownloadListSelectedPluginConfiguration implements PluginConfigurationInterface
 {
     use PluginConfigurationTrait;
+    use PluginRegistrationTrait;
 
-    static protected $pluginName = 'ListSelected';
-    static protected $pluginSignature = 'cpsdownload_listselected';
-    static protected $pluginTitle = 'LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list_selected.title';
-
-    static protected $flexForm = 'FILE:EXT:cps_download/Configuration/FlexForms/DownloadListSelectedPlugin.xml';
-    static protected $controllerActions = [
+    protected string $extensionName = Extension::KEY;
+    protected string $pluginName = 'ListSelected';
+    protected string $pluginSignature = 'cpsdownload_listselected';
+    protected string $pluginTitle = 'LLL:EXT:cps_download/Resources/Private/Language/locallang_be.xlf:plugin.download.list_selected.title';
+    protected string $pluginDescription = 'Plugin for Selected Downloads';
+    protected string $pluginGroup = 'plugins';
+    protected string $pluginType = ExtensionUtility::PLUGIN_TYPE_PLUGIN;
+    protected string $flexForm = 'FILE:EXT:cps_download/Configuration/FlexForms/DownloadListSelectedPlugin.xml';
+    protected array $controllerActions = [
         DownloadController::class => 'listSelected'
     ];
-
-    static protected $nonCacheableControllerActions = [];
-    static protected $vendorExtensionName = Extension::KEY;
+    protected array $nonCacheableControllerActions = [];
 }
