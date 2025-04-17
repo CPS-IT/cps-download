@@ -1,3 +1,13 @@
+2025-04-17         [RELEASE] Release of cps-download 2.0.0 (Dirk Wenzel)
+2025-04-17 91fb211 missing icons and interface added to plugin configuration (Dirk Wenzel)
+2025-04-16 26b777c [WIP] plugin registration refactored for dwenzel/t3extension-tools:^4.0 (Dirk Wenzel)
+2025-04-15 9279ff3 typo corrected (Dirk Wenzel)
+2025-04-15 fb8f21c dependency dwenzel/t3extension-tools updated (Dirk Wenzel)
+2024-11-04 0be4b27 [TASK] update required version of dwenzel/t3extension-tools (Juliane Wundermann)
+2024-08-01 18d60bf BUGFIX - TypeError explode(): Argument #2 ($string) must be of type string, int given (Krzysztof Napora)
+2024-07-30 96a8b50 v12 logicalAnd migration (Krzysztof Napora)
+2024-07-19 ceda5b1 v12 compatibility (Krzysztof Napora)
+
 2023-07-07         [RELEASE] Release of cps_download 1.0.2 (Vladimir Falcon)
 2023-07-07 75f83d9 Fixed TCA deprecations (Vladimir Falcon)
 
