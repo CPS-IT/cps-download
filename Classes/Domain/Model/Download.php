@@ -66,17 +66,17 @@ class Download extends AbstractDomainObject
      * Download files
      *
      * @var ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @Cascade remove
-     * @Lazy
      */
+    #[Cascade(['value' => 'remove'])] // remove
+    #[Lazy]
     protected $files;
 
     /**
      * Categories
      *
      * @var ObjectStorage<\Cpsit\CpsDownload\Domain\Model\Category>
-     * @Lazy
      */
+    #[Lazy]
     protected $categories;
 
     public function __construct()

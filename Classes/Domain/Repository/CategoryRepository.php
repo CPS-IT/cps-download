@@ -11,9 +11,9 @@ namespace Cpsit\CpsDownload\Domain\Repository;
  */
 
 use Cpsit\CpsDownload\Domain\Model\Category;
-use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository as CoreCategoryRepository;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class CategoryRepository extends CoreCategoryRepository
+class CategoryRepository extends Repository
 {
 
 }
