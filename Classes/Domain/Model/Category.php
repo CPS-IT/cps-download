@@ -22,8 +22,8 @@ class Category extends AbstractEntity
 {
     /**
      * @var string
-     * @Extbase\Validate("NotEmpty")
      */
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
     protected $title = '';
 
     /**
@@ -35,14 +35,14 @@ class Category extends AbstractEntity
      * Downloads
      *
      * @var ObjectStorage<\Cpsit\CpsDownload\Domain\Model\Download>
-     * @Lazy
      */
+    #[Lazy]
     protected $downloads;
 
     /**
      * @var Category|null
-     * @Lazy
      */
+    #[Lazy]
     protected $parent;
 
     public function __construct()
@@ -73,7 +73,7 @@ class Category extends AbstractEntity
      *
      * @param string $title the title to set, may be empty
      */
-    public function setTitle($title)
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
@@ -93,7 +93,7 @@ class Category extends AbstractEntity
      *
      * @param string $description the description to set, may be empty
      */
-    public function setDescription($description)
+    public function setDescription($description): void
     {
         $this->description = $description;
     }
@@ -134,7 +134,7 @@ class Category extends AbstractEntity
      *
      * @param Category $parent the parent category
      */
-    public function setParent(Category $parent)
+    public function setParent(Category $parent): void
     {
         $this->parent = $parent;
     }
