@@ -1,3 +1,6 @@
+2025-12-12         [RELEASE] Release of cps-download 2.0.1 (Vladimir Falcón Piva)
+2025-12-12 9466026 [TASK] Update cpsit/cps-utility dependency to version 3.2 (Vladimir Falcón Piva)
+
 2025-04-17         [RELEASE] Release of cps-download 2.0.0 (Dirk Wenzel)
 2025-04-17 91fb211 missing icons and interface added to plugin configuration (Dirk Wenzel)
 2025-04-16 26b777c [WIP] plugin registration refactored for dwenzel/t3extension-tools:^4.0 (Dirk Wenzel)
