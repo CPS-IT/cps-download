@@ -1,3 +1,7 @@
+2026-10-07         [RELEASE] Release of cps-download 2.1.0 (Vladimir Falcón Piva)
+2026-10-07 ae0ddf2 [TASK] Update PHPUnit Tests/Build configs for typo3/testing-framework (Vladimir Falcón Piva)
+2026-10-07 7f26d9a [TASK] Migrate tests to typo3/testing-framework 8 and PHPUnit 10 (Vladimir Falcón Piva)
+
 2025-12-12         [RELEASE] Release of cps-download 2.0.1 (Vladimir Falcón Piva)
 2025-12-12 9466026 [TASK] Update cpsit/cps-utility dependency to version 3.2 (Vladimir Falcón Piva)
 
