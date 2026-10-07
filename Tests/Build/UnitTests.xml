@@ -1,33 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-	backupGlobals="true"
-	backupStaticAttributes="false"
-	bootstrap="../../.Build/vendor/nimut/testing-framework/res/Configuration/UnitTestsBootstrap.php"
-	colors="true"
-	convertErrorsToExceptions="true"
-	convertWarningsToExceptions="true"
-	forceCoversAnnotation="false"
-	processIsolation="false"
-	stopOnError="false"
-	stopOnFailure="false"
-	stopOnIncomplete="false"
-	stopOnSkipped="false"
-	verbose="false">
-
-	<testsuites>
-		<testsuite name="cps_download tests">
-			<directory>../Unit/</directory>
-		</testsuite>
-	</testsuites>
-	<filter>
-		<whitelist processUncoveredFilesFromWhitelist="false">
-			<directory suffix=".php">../../Classes/</directory>
-		</whitelist>
-	</filter>
-	<logging>
-		<log type="coverage-text" target="php://stdout" showUncoveredFiles="true" />
-		<log type="coverage-html" target="../../.Build/log/coverage/" showUncoveredFiles="true" />
-		<log type="coverage-clover" target="../../.Build/log/coverage/clover.xml" showUncoveredFiles="true" />
-		<log type="junit" target="../../.Build/log/coverage/junit.xml" showUncoveredFiles="true" />
-	</logging>
-
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../.Build/vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="../../.Build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+    cacheDirectory="../../.Build/.phpunit.cache"
+    colors="true"
+    backupGlobals="true"
+    processIsolation="false"
+    stopOnError="false"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false"
+>
+    <testsuites>
+        <testsuite name="cps_download tests">
+            <directory>../Unit/</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">../../Classes/</directory>
+        </include>
+    </source>
+    <coverage>
+        <report>
+            <text outputFile="php://stdout" showUncoveredFiles="true"/>
+            <html outputDirectory="../../.Build/log/coverage/"/>
+            <clover outputFile="../../.Build/log/coverage/clover.xml"/>
+        </report>
+    </coverage>
+    <logging>
+        <junit outputFile="../../.Build/log/coverage/junit.xml"/>
+    </logging>
 </phpunit>
