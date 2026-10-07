@@ -21,47 +21,23 @@ namespace Cpsit\CpsDownload\Tests\Functional\Domain\Repository;
 
 use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
 use Cpsit\CpsDownload\Domain\Repository\DownloadRepository;
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 class DownloadRepositoryTest extends FunctionalTestCase
 {
-    /**
-     * @var DownloadRepository|MockObject
-     */
-    protected $subject;
+    protected DownloadRepository $subject;
 
-    /**
-     * @var ObjectManagerInterface
-     */
-    protected $objectManager;
+    protected array $testExtensionsToLoad = [
+        'cpsit/cps-utility',
+        'cpsit/cps-author',
+        'cpsit/cps-download',
+    ];
 
-    protected $testExtensionsToLoad = ['typo3conf/ext/cps_download'];
-
-    /**
-     * @var QueryInterface|MockObject
-     */
-    protected $query;
-
-    /**
-     * @var QueryResultInterface|MockObject
-     */
-    protected $result;
-
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
-        /** @var ObjectManager|ObjectManagerInterface $objectManager */
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->subject = $this->objectManager->get(DownloadRepository::class);
-
-        $fixturePath = ORIGINAL_ROOT . 'typo3conf/ext/cps_download/Tests/Functional/Fixtures/Database/';
-        $this->importDataSet($fixturePath . 'tx_cpsdownload_domain_model_download.xml');
+        $this->subject = $this->get(DownloadRepository::class);
+        $this->importCSVDataSet(__DIR__ . '/../../Fixtures/Database/tx_cpsdownload_domain_model_download.csv');
     }
 
     public function testFindAll(): void
