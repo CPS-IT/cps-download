@@ -7,6 +7,9 @@ $ll = 'LLL:EXT:' . $extensionKey . '/Resources/Private/Language/locallang_db.xlf
 
 return [
     'ctrl' => [
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
         'title' => $ll . $tableName . '.title',
         'label' => 'title',
         'default_sortby' => 'sorting',
