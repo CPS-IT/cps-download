@@ -114,10 +114,14 @@ class DownloadRepository extends Repository
             ->select('*')
             ->from(Download::TABLE_NAME)
             ->where($queryBuilder->expr()->in(Download::FIELD_UID, $uidList))
-            ->add('orderBy',
-                'FIELD(' . Download::TABLE_NAME . '.' . Download::FIELD_UID . ',' . implode(',', $uidList) . ')')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
+
+        $position = array_flip(array_map('intval', $uidList));
+        usort(
+            $rows,
+            static fn (array $a, array $b): int => $position[(int)$a[Download::FIELD_UID]] <=> $position[(int)$b[Download::FIELD_UID]]
+        );
 
         return $this->dataMapper->map(Download::class, $rows);
     }
