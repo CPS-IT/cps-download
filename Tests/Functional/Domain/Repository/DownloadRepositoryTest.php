@@ -21,6 +21,7 @@ namespace Cpsit\CpsDownload\Tests\Functional\Domain\Repository;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Cpsit\CpsDownload\Domain\Model\Download;
 use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
 use Cpsit\CpsDownload\Domain\Repository\DownloadRepository;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -72,4 +73,15 @@ class DownloadRepositoryTest extends FunctionalTestCase
         );
     }
 
+    public function testRepositoryIsAvailableFromTheContainer(): void
+    {
+        self::assertInstanceOf(DownloadRepository::class, $this->get(DownloadRepository::class));
+    }
+
+    public function testFindByUidListKeepsTheUidOrder(): void
+    {
+        $result = $this->subject->findByUidList([2, 1]);
+
+        self::assertSame([2, 1], array_map(static fn(Download $download): ?int => $download->getUid(), $result));
+    }
 }

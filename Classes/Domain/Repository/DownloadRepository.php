@@ -13,9 +13,7 @@ namespace Cpsit\CpsDownload\Domain\Repository;
 use Cpsit\CpsDownload\Domain\Model\Download;
 use Cpsit\CpsDownload\Domain\Model\Dto\DemandInterface;
 use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
-use Doctrine\DBAL\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -38,8 +36,10 @@ class DownloadRepository extends Repository
         Download::FIELD_SORTING => Query::ORDER_DESCENDING,
     ];
 
-    public function __construct(\TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper $dataMapper)
-    {
+    public function __construct(
+        DataMapper $dataMapper,
+        private readonly ConnectionPool $connectionPool,
+    ) {
         parent::__construct();
         $this->dataMapper = $dataMapper;
     }
@@ -107,9 +107,7 @@ class DownloadRepository extends Repository
             return [];
         }
 
-        /** @var QueryBuilder $queryBuilder */
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable(Download::TABLE_NAME);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(Download::TABLE_NAME);
 
         $rows = $queryBuilder
             ->select('*')
