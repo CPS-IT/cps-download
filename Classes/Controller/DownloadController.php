@@ -22,6 +22,7 @@ use Cpsit\CpsUtility\Utility\PageUtility;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
 /**
  * Class DownloadController
@@ -33,12 +34,9 @@ class DownloadController extends ActionController
 
     protected const RECURSIVE_DEPTH_DEFAULT = 0;
 
-    /**
-     * @var DownloadRepository|null
-     */
     protected DownloadRepository $downloadRepository;
 
-    public function __construct(?DownloadRepository $repository = null)
+    public function __construct(DownloadRepository $repository)
     {
         $this->downloadRepository = $repository;
     }
@@ -52,8 +50,9 @@ class DownloadController extends ActionController
     protected function prepareView(): void
     {
         $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
-        if (is_object($GLOBALS['TSFE'])) {
-            $this->view->assign('pageData', $GLOBALS['TSFE']->page);
+        $pageInformation = $this->request->getAttribute('frontend.page.information');
+        if ($pageInformation instanceof PageInformation) {
+            $this->view->assign('pageData', $pageInformation->getPageRecord());
         }
     }
 

@@ -26,13 +26,7 @@ parameters:
 			count: 1
 			path: Classes/Configuration/Plugin/DownloadListSelectedPluginConfiguration.php
 
-		# Reason: controller rework (C6): nullable constructor and doc type; authorIds string list is an existing input contract
-		-
-			message: '#^PHPDoc tag @var for property Cpsit\\CpsDownload\\Controller\\DownloadController\:\:\$downloadRepository with type Cpsit\\CpsDownload\\Domain\\Repository\\DownloadRepository\|null is not subtype of native type Cpsit\\CpsDownload\\Domain\\Repository\\DownloadRepository\.$#'
-			identifier: property.phpDocType
-			count: 1
-			path: Classes/Controller/DownloadController.php
-
+		# Reason: authorIds string list is an existing input contract (setAuthorIds expects int[])
 		-
 			message: '#^Parameter \#1 \$authorIds of method Cpsit\\CpsDownload\\Domain\\Model\\Dto\\DownloadDemand\:\:setAuthorIds\(\) expects array\<int\>, list\<string\> given\.$#'
 			identifier: argument.type
