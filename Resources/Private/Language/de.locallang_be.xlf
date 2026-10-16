@@ -24,6 +24,10 @@
 				<source>Displays a list of selected Download records in Frontend.</source>
 				<target>Zeigt eine Liste ausgewählter Download-Datensätze im Frontend an.</target>
 			</trans-unit>
+			<trans-unit id="tab.configuration">
+				<source>Configuration</source>
+				<target>Konfiguration</target>
+			</trans-unit>
 			<trans-unit id="flexform.sheet.general">
 				<source>General</source>
 				<target>Allgemeines</target>

@@ -1,31 +1,5 @@
 parameters:
 	ignoreErrors:
-		# Reason: class is deleted with the core plugin registration (C8), entries go with it
-		-
-			message: '#^Property Cpsit\\CpsDownload\\Configuration\\Plugin\\DownloadListPluginConfiguration\:\:\$controllerActions type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/Configuration/Plugin/DownloadListPluginConfiguration.php
-
-		-
-			message: '#^Property Cpsit\\CpsDownload\\Configuration\\Plugin\\DownloadListPluginConfiguration\:\:\$nonCacheableControllerActions type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/Configuration/Plugin/DownloadListPluginConfiguration.php
-
-		# Reason: class is deleted with the core plugin registration (C8), entries go with it
-		-
-			message: '#^Property Cpsit\\CpsDownload\\Configuration\\Plugin\\DownloadListSelectedPluginConfiguration\:\:\$controllerActions type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/Configuration/Plugin/DownloadListSelectedPluginConfiguration.php
-
-		-
-			message: '#^Property Cpsit\\CpsDownload\\Configuration\\Plugin\\DownloadListSelectedPluginConfiguration\:\:\$nonCacheableControllerActions type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: Classes/Configuration/Plugin/DownloadListSelectedPluginConfiguration.php
-
 		# Reason: authorIds string list is an existing input contract (setAuthorIds expects int[])
 		-
 			message: '#^Parameter \#1 \$authorIds of method Cpsit\\CpsDownload\\Domain\\Model\\Dto\\DownloadDemand\:\:setAuthorIds\(\) expects array\<int\>, list\<string\> given\.$#'

@@ -18,6 +18,9 @@
 			<trans-unit id="plugin.download.list_selected.description">
 				<source>Displays a list of selected Download records in Frontend.</source>
 			</trans-unit>
+			<trans-unit id="tab.configuration">
+				<source>Configuration</source>
+			</trans-unit>
 			<trans-unit id="flexform.sheet.general">
 				<source>General</source>
 			</trans-unit>
