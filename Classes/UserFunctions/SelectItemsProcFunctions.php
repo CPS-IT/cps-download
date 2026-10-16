@@ -17,12 +17,12 @@ class SelectItemsProcFunctions
     /**
      * Get allowed download file extensions
      *
-     * @param array $params
+     * @param array<string, mixed> $params
      */
     public function downloadFileExtensions(&$params): void
     {
         foreach (Download::ALLOWED_FILE_FILE_EXTENSIONS as $fileExtension) {
-            $params['items'][] = ['.' .$fileExtension, $fileExtension];
+            $params['items'][] = ['.' . $fileExtension, $fileExtension];
         }
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Cpsit\CpsDownload\Tests\Unit\Configuration;
@@ -11,11 +12,10 @@ namespace Cpsit\CpsDownload\Tests\Unit\Configuration;
  * of the License, or any later version.
  */
 
+use Cpsit\CpsDownload\Domain\Model\Category;
 use Cpsit\CpsDownload\Domain\Model\Download;
 use PHPUnit\Framework\TestCase;
-use Cpsit\CpsDownload\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 
 class DownloadTest extends TestCase
 {
@@ -45,7 +45,6 @@ class DownloadTest extends TestCase
         );
     }
 
-
     public function testTitleCanBeSet(): void
     {
         $download = 'foo';
@@ -59,6 +58,7 @@ class DownloadTest extends TestCase
     public function testCategoriesCanBeSet(): void
     {
         $category = new Category();
+        /** @var ObjectStorage<Category> $storage */
         $storage = new ObjectStorage();
         $storage->attach($category);
 
@@ -85,6 +85,7 @@ class DownloadTest extends TestCase
     public function testCategoryCanBeRemoved(): void
     {
         $category = new Category();
+        /** @var ObjectStorage<Category> $storage */
         $storage = new ObjectStorage();
         $storage->attach($category);
 

@@ -1,4 +1,5 @@
 <?php
+
 $EM_CONF[$_EXTKEY] = [
     'title' => 'CPS Download',
     'description' => 'Downloads',
@@ -8,17 +9,17 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'v.falcon@familie-redlich.de',
     'author_company' => 'CPS GmbH',
     'version' => '2.1.0',
-    'constraints' =>
-        [
-            'depends' =>
-                [
-                    'typo3' => '12.4.0-12.4.99',
+    'constraints'
+        => [
+            'depends'
+                => [
+                    'typo3' => '13.4.0-13.4.99',
                 ],
-            'conflicts' =>
-                [
+            'conflicts'
+                => [
                 ],
-            'suggests' =>
-                [
+            'suggests'
+                => [
                 ],
-        ]
+        ],
 ];

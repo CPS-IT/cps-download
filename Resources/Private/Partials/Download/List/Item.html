@@ -42,9 +42,9 @@
                     <a
                         href="{file.originalResource.publicUrl -> f:format.htmlspecialchars()}"
                         target="_blank">
-						{f:if(condition:file.originalResource.title, then:file.originalResource.title, else:file.originalResource.name)}
-					</a>
-				</span>
+                        {f:if(condition:file.originalResource.title, then:file.originalResource.title, else:file.originalResource.name)}
+                    </a>
+                </span>
                 <span class="file-size">{file.originalResource.size -> f:format.bytes()}</span>
             </p>
         </f:for>

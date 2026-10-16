@@ -10,7 +10,4 @@ namespace Cpsit\CpsDownload\Domain\Model\Dto;
  * of the License, or any later version.
  */
 
-interface DemandInterface
-{
-
-}
+interface DemandInterface {}
