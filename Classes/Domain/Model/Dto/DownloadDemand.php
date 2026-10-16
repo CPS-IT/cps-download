@@ -10,8 +10,6 @@ namespace Cpsit\CpsDownload\Domain\Model\Dto;
  * of the License, or any later version.
  */
 
-use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
-
 class DownloadDemand implements DemandInterface
 {
     public const DEFAULT_LIMIT = 10;
@@ -130,21 +128,4 @@ class DownloadDemand implements DemandInterface
         $this->categoryIds = $categoryIds;
         return $this;
     }
-
-    /**
-     * Get first category
-     *
-     * @return DomainObjectInterface|null
-     */
-    public function getFirstCategory(): ?DomainObjectInterface
-    {
-        $categories = $this->getCategories();
-        if (!is_null($categories)) {
-            $categories->rewind();
-            return $categories->current();
-        }
-        return null;
-
-    }
-
 }

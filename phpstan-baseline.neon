@@ -13,10 +13,3 @@ parameters:
 			identifier: instanceof.alwaysFalse
 			count: 1
 			path: Classes/Domain/Model/Category.php
-
-		# Reason: dead method calling a missing getCategories(), decided in the unused-code commit (C11)
-		-
-			message: '#^Call to an undefined method Cpsit\\CpsDownload\\Domain\\Model\\Dto\\DownloadDemand\:\:getCategories\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: Classes/Domain/Model/Dto/DownloadDemand.php
