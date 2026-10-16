@@ -1,0 +1,16 @@
+tt_content
+,uid,pid,CType,list_type,header,tx_container_parent,colPos,hidden,deleted,t3ver_wsid
+,1,1,list,cpsdownload_list,list,0,0,0,0,0
+,2,1,list,cpsdownload_listselected,listselected,0,0,0,0,0
+,3,1,list,other_plugin,other,0,0,0,0,0
+,4,1,cpsdownload_list,,already migrated,0,0,0,0,0
+,5,1,text,,text,0,0,0,0,0
+,6,1,list,cpsdownload_listselected,hidden,0,0,1,0,0
+,7,1,list,cpsdownload_listselected,deleted,0,0,0,1,0
+,8,1,b13-2cols-with-header-container,,container parent,0,0,0,0,0
+,9,1,list,cpsdownload_listselected,in container,8,201,0,0,0
+,10,1,list,cpsdownload_listselected,workspace,0,0,0,0,1
+be_groups
+,uid,pid,title,explicit_allowdeny
+,1,0,old permission,"tt_content:CType:text,tt_content:list_type:cpsdownload_list,tt_content:list_type:cpsdownload_listselected,tt_content:list_type:other_plugin"
+,2,0,new permission,"tt_content:CType:cpsdownload_list"
