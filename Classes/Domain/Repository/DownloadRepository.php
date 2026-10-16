@@ -10,19 +10,19 @@ namespace Cpsit\CpsDownload\Domain\Repository;
  * of the License, or any later version.
  */
 
-use Doctrine\DBAL\Query\QueryBuilder;
+use Cpsit\CpsDownload\Domain\Model\Download;
 use Cpsit\CpsDownload\Domain\Model\Dto\DemandInterface;
 use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
-use Cpsit\CpsDownload\Domain\Model\Download;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
-use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
+/**
+ * @extends Repository<Download>
+ */
 class DownloadRepository extends Repository
 {
     /**
@@ -32,19 +32,21 @@ class DownloadRepository extends Repository
      */
     protected $dataMapper;
 
-    public function __construct(\TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper $dataMapper)
-    {
+    protected $defaultOrderings = [
+        Download::FIELD_SORTING => Query::ORDER_DESCENDING,
+    ];
+
+    public function __construct(
+        DataMapper $dataMapper,
+        private readonly ConnectionPool $connectionPool,
+    ) {
         parent::__construct();
         $this->dataMapper = $dataMapper;
     }
 
-    protected $defaultOrderings = [
-        Download::FIELD_SORTING => Query::ORDER_DESCENDING
-    ];
-
     /**
      * @param DemandInterface $demand
-     * @return QueryResultInterface
+     * @return QueryResultInterface<int, Download>
      */
     public function findDemanded(DemandInterface $demand): QueryResultInterface
     {
@@ -58,7 +60,7 @@ class DownloadRepository extends Repository
     }
 
     /**
-     * @param QueryInterface $query
+     * @param QueryInterface<Download> $query
      * @param DownloadDemand $demand
      */
     protected function applyConstraints(QueryInterface $query, DemandInterface $demand): void
@@ -72,7 +74,6 @@ class DownloadRepository extends Repository
             $query->setQuerySettings($querySettings);
         }
 
-
         if (!empty($categories = $demand->getCategoryIds())) {
             foreach ($categories as $category) {
                 $categoryConstraint[] = $query->contains(Download::FIELD_CATEGORIES, $category);
@@ -84,7 +85,7 @@ class DownloadRepository extends Repository
             $constraints[] = $query->in(Download::FIELD_AUTHOR, $authors);
         }
 
-        if(!empty($constraints)){
+        if (!empty($constraints)) {
             $query->matching(
                 $query->logicalAnd(...$constraints)
             );
@@ -96,7 +97,7 @@ class DownloadRepository extends Repository
      * Returns all matching records for the given list of uids and applies the uidList sorting for the result
      *
      * @param int[] $uidList
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return list<Download>
      * @throws \Doctrine\DBAL\Driver\Exception
      * @throws \Doctrine\DBAL\Exception
      */
@@ -106,18 +107,20 @@ class DownloadRepository extends Repository
             return [];
         }
 
-        /** @var QueryBuilder $queryBuilder */
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable(Download::TABLE_NAME);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(Download::TABLE_NAME);
 
         $rows = $queryBuilder
             ->select('*')
             ->from(Download::TABLE_NAME)
             ->where($queryBuilder->expr()->in(Download::FIELD_UID, $uidList))
-            ->add('orderBy',
-                'FIELD(' . Download::TABLE_NAME . '.' . Download::FIELD_UID . ',' . implode(',', $uidList) . ')')
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
+
+        $position = array_flip(array_map('intval', $uidList));
+        usort(
+            $rows,
+            static fn(array $a, array $b): int => $position[(int)$a[Download::FIELD_UID]] <=> $position[(int)$b[Download::FIELD_UID]]
+        );
 
         return $this->dataMapper->map(Download::class, $rows);
     }

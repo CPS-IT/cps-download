@@ -1,6 +1,6 @@
 <?php
-defined('TYPO3') or die();
 
+defined('TYPO3') or die();
 
 $GLOBALS['TCA']['sys_category']['columns']['items']['config']['MM_oppositeUsage']['tx_cpsdownload_domain_model_download']
     = ['categories'];
@@ -23,7 +23,7 @@ $downloadsSysCategoryColumns = [
                 'fieldname' => 'categories',
                 'tablenames' => 'tx_cpsdownload_domain_model_download',
             ],
-            'maxitems' => 1000
+            'maxitems' => 1000,
         ],
     ],
 ];

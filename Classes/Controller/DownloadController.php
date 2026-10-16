@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Cpsit\CpsDownload\Controller;
@@ -11,18 +12,17 @@ namespace Cpsit\CpsDownload\Controller;
  * of the License, or any later version.
  */
 
-use Cpsit\CpsDownload\Service\PageService;
-use Cpsit\CpsUtility\Traits\FeCacheTagsTrait;
 use Cpsit\CpsDownload\Configuration\SettingsInterface as SI;
 use Cpsit\CpsDownload\Domain\Model\Dto\DemandInterface;
 use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
 use Cpsit\CpsDownload\Domain\Repository\DownloadRepository;
+use Cpsit\CpsUtility\Traits\ExtBaseTypoScriptStdWrapParserTrait;
+use Cpsit\CpsUtility\Traits\FeCacheTagsTrait;
+use Cpsit\CpsUtility\Utility\PageUtility;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
-use Cpsit\CpsUtility\Utility\PageUtility;
-use Cpsit\CpsUtility\Traits\ExtBaseTypoScriptStdWrapParserTrait;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
 /**
  * Class DownloadController
@@ -34,12 +34,9 @@ class DownloadController extends ActionController
 
     protected const RECURSIVE_DEPTH_DEFAULT = 0;
 
-    /**
-     * @var DownloadRepository|null
-     */
     protected DownloadRepository $downloadRepository;
 
-    public function __construct(DownloadRepository $repository = null)
+    public function __construct(DownloadRepository $repository)
     {
         $this->downloadRepository = $repository;
     }
@@ -53,8 +50,9 @@ class DownloadController extends ActionController
     protected function prepareView(): void
     {
         $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
-        if (is_object($GLOBALS['TSFE'])) {
-            $this->view->assign('pageData', $GLOBALS['TSFE']->page);
+        $pageInformation = $this->request->getAttribute('frontend.page.information');
+        if ($pageInformation instanceof PageInformation) {
+            $this->view->assign('pageData', $pageInformation->getPageRecord());
         }
     }
 

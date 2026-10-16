@@ -1,0 +1,15 @@
+parameters:
+	ignoreErrors:
+		# Reason: authorIds string list is an existing input contract (setAuthorIds expects int[])
+		-
+			message: '#^Parameter \#1 \$authorIds of method Cpsit\\CpsDownload\\Domain\\Model\\Dto\\DownloadDemand\:\:setAuthorIds\(\) expects array\<int\>, list\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: Classes/Controller/DownloadController.php
+
+		# Reason: defensive proxy check kept for lazy loaded parent
+		-
+			message: '#^Instanceof between Cpsit\\CpsDownload\\Domain\\Model\\Category\|null and TYPO3\\CMS\\Extbase\\Persistence\\Generic\\LazyLoadingProxy will always evaluate to false\.$#'
+			identifier: instanceof.alwaysFalse
+			count: 1
+			path: Classes/Domain/Model/Category.php

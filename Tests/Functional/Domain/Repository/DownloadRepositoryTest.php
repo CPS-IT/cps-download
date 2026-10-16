@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Cpsit\CpsDownload\Tests\Functional\Domain\Repository;
 
 /***************************************************************
@@ -19,6 +21,7 @@ namespace Cpsit\CpsDownload\Tests\Functional\Domain\Repository;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Cpsit\CpsDownload\Domain\Model\Download;
 use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
 use Cpsit\CpsDownload\Domain\Repository\DownloadRepository;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -60,7 +63,7 @@ class DownloadRepositoryTest extends FunctionalTestCase
 
     public function testFindDemandedFindsDownloadsByPageIds(): void
     {
-        $pages = [1,3];
+        $pages = [1, 3];
         $demand = new DownloadDemand();
         $demand->setPageIds($pages);
         $result = $this->subject->findDemanded($demand);
@@ -70,4 +73,15 @@ class DownloadRepositoryTest extends FunctionalTestCase
         );
     }
 
+    public function testRepositoryIsAvailableFromTheContainer(): void
+    {
+        self::assertInstanceOf(DownloadRepository::class, $this->get(DownloadRepository::class));
+    }
+
+    public function testFindByUidListKeepsTheUidOrder(): void
+    {
+        $result = $this->subject->findByUidList([2, 1]);
+
+        self::assertSame([2, 1], array_map(static fn(Download $download): ?int => $download->getUid(), $result));
+    }
 }
