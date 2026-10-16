@@ -33,23 +33,39 @@ Editors have the possibility to enable or disable the search form in front end. 
 
 **Cache**: Cacheable
 
-## Tests
+## Code quality
 
-### Setup Test Environment 
+Run in the DDEV project (see Tests), prefix with `ddev`:
 
 ```
-docker-composer -f Tests/Build/docker-compose.yml up -d
-docker-compose -f Tests/Build/docker-compose.yml exec web bash -c "cd /app && composer test:functional:prepare"
+ddev composer lint   # composer.json, EditorConfig, PHP-CS-Fixer, TypoScript
+ddev composer fix    # fix the findings that can be fixed automatically
+ddev composer sca    # PHPStan, level 6
+```
+
+## Tests
+
+Tests and code quality tools run in the package's own DDEV project
+(`.ddev/config.yaml`: PHP 8.4, MariaDB 10.11, hostname
+`cps-download.ddev.site`). The functional tests use the database named in the
+`typo3Database*` variables of the DDEV config. The private repositories
+`cpsit/cps-utility` and `cpsit/cps-author` need your SSH key in the container:
+run `ddev auth ssh` once.
+
+```
+ddev auth ssh
+ddev start
+ddev composer install
 ```
 
 ### Unit Tests
 
 ```
-docker-compose -f Tests/Build/docker-compose.yml exec web bash -c "cd /app && composer test:unit"
+ddev composer test:unit
 ```
 
 ### Functional Tests
 
 ```
-docker-compose -f Tests/Build/docker-compose.yml exec web bash -c "cd /app && composer test:functional:run"
+ddev composer test:functional
 ```
