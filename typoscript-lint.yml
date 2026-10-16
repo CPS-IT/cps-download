@@ -17,6 +17,7 @@ sniffs:
       allowedRightValues:
         - "sorting asc"
         - "tx_cpsdownload_domain_model_download"
+        - "cps-download"
   - class: DuplicateAssignment
   - class: EmptySection
   - class: NestingConsistency

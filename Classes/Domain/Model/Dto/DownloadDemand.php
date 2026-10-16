@@ -142,9 +142,9 @@ class DownloadDemand implements DemandInterface
         if (!is_null($categories)) {
             $categories->rewind();
             return $categories->current();
-        } else {
-            return null;
         }
+        return null;
+
     }
 
 }

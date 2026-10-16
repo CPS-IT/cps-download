@@ -10,11 +10,11 @@ namespace Cpsit\CpsDownload\Configuration\Plugin;
  * of the License, or any later version.
  */
 
+use Cpsit\CpsDownload\Configuration\Extension;
 use Cpsit\CpsDownload\Configuration\SettingsInterface as SI;
 use Cpsit\CpsDownload\Controller\DownloadController;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationInterface;
 use DWenzel\T3extensionTools\Configuration\PluginConfigurationTrait;
-use Cpsit\CpsDownload\Configuration\Extension;
 use DWenzel\T3extensionTools\Configuration\PluginRegistrationInterface;
 use DWenzel\T3extensionTools\Configuration\PluginRegistrationTrait;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
@@ -42,7 +42,7 @@ class DownloadListPluginConfiguration implements PluginConfigurationInterface, P
     protected string $pluginIcon = SI::ICON_IDENTIFIER_DOWNLOAD;
     protected string $flexForm = 'FILE:EXT:cps_download/Configuration/FlexForms/DownloadListPlugin.xml';
     protected array $controllerActions = [
-        DownloadController::class => 'list'
+        DownloadController::class => 'list',
     ];
     protected array $nonCacheableControllerActions = [];
 }

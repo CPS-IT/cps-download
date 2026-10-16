@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Cpsit\CpsDownload\Domain\Model;
@@ -12,11 +13,11 @@ namespace Cpsit\CpsDownload\Domain\Model;
  */
 
 use Cpsit\CpsAuthor\Domain\Model\Author;
+use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Annotation\ORM\Cascade;
-use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 
 class Download extends AbstractDomainObject
 {
@@ -35,7 +36,6 @@ class Download extends AbstractDomainObject
     public const FIELD_AUTHOR = 'author';
     public const FIELD_INFORMATION_DATE = 'information_date';
 
-
     public const DOWNLOAD_TYPE = [
         'FILE' => 0,
         'EXTERNAL_FILE' => 1,
@@ -43,7 +43,7 @@ class Download extends AbstractDomainObject
     ];
 
     public const ALLOWED_FILE_FILE_EXTENSIONS = [
-        'doc','docx','odt','rtf','txt','wps','csv','ppt','pptx','pdf','xls','xlsx','zip','7z','gz'
+        'doc', 'docx', 'odt', 'rtf', 'txt', 'wps', 'csv', 'ppt', 'pptx', 'pdf', 'xls', 'xlsx', 'zip', '7z', 'gz',
     ];
 
     protected int $type = 0;
@@ -221,7 +221,7 @@ class Download extends AbstractDomainObject
     }
 
     /**
-     * @param ObjectStorage $files
+     * @param ObjectStorage<FileReference> $files
      */
     public function setFiles(ObjectStorage $files): void
     {
@@ -236,9 +236,6 @@ class Download extends AbstractDomainObject
      */
     public function addFile(FileReference $file): Download
     {
-        if ($this->getFiles() === null) {
-            $this->file = new ObjectStorage();
-        }
         $this->files->attach($file);
         return $this;
     }
@@ -269,7 +266,6 @@ class Download extends AbstractDomainObject
      * Sets categories
      *
      * @param ObjectStorage<Category> $categories
-     * @return Download
      */
     public function setCategories(ObjectStorage $categories): void
     {
@@ -324,7 +320,6 @@ class Download extends AbstractDomainObject
         return $this->informationDate;
     }
 
-
     /**
      * Get first category
      *
@@ -333,12 +328,9 @@ class Download extends AbstractDomainObject
     public function getFirstCategory(): ?Category
     {
         $categories = $this->getCategories();
-        if (!is_null($categories)) {
-            $categories->rewind();
-            return $categories->current();
-        } else {
-            return null;
-        }
+        $categories->rewind();
+
+        return $categories->current();
     }
 
     /**
@@ -349,11 +341,8 @@ class Download extends AbstractDomainObject
     public function getFirstFile(): ?FileReference
     {
         $files = $this->getFiles();
-        if (!is_null($files)) {
-            $files->rewind();
-            return $files->current();
-        } else {
-            return null;
-        }
+        $files->rewind();
+
+        return $files->current();
     }
 }

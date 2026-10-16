@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Cpsit\CpsDownload\Configuration;
@@ -11,11 +12,11 @@ namespace Cpsit\CpsDownload\Configuration;
  * of the License, or any later version.
  */
 
-use DWenzel\T3extensionTools\Configuration\ExtensionConfiguration;
 use Cpsit\CpsDownload\Configuration\Plugin\DownloadListPluginConfiguration;
 use Cpsit\CpsDownload\Configuration\Plugin\DownloadListSelectedPluginConfiguration;
-use Cpsit\CpsDownload\Domain\Model\Download;
 use Cpsit\CpsDownload\Configuration\SettingsInterface as SI;
+use Cpsit\CpsDownload\Domain\Model\Download;
+use DWenzel\T3extensionTools\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
@@ -25,13 +26,12 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  */
 final class Extension extends ExtensionConfiguration
 {
-
     public const NAME = 'CpsDownload';
     public const KEY = 'cps_download';
     public const VENDOR_NAME = 'Cpsit';
 
     public const TABLES_ALLOWED_ON_STANDARD_PAGES = [
-        Download::TABLE_NAME
+        Download::TABLE_NAME,
     ];
 
     /**
@@ -46,7 +46,7 @@ final class Extension extends ExtensionConfiguration
 
     protected const PLUGINS_TO_REGISTER = [
         DownloadListPluginConfiguration::class,
-        DownloadListSelectedPluginConfiguration::class
+        DownloadListSelectedPluginConfiguration::class,
     ];
 
     /**
@@ -54,7 +54,7 @@ final class Extension extends ExtensionConfiguration
      * @var string[]
      */
     protected const ADD_PAGE_TSCONFIG = [
-        "@import 'EXT:cps_download/Configuration/TSconfig/ContentElementWizard.tsconfig'"
+        "@import 'EXT:cps_download/Configuration/TSconfig/ContentElementWizard.tsconfig'",
     ];
 
     /**

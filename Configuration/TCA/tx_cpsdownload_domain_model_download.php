@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3') or die();
 
 $tableName = \Cpsit\CpsDownload\Domain\Model\Download::TABLE_NAME;
@@ -128,17 +129,17 @@ return [
                     [
                         'label' => $ll . $tableName . '.type.I.0',
                         'value' => 0,
-                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_FILE_DOWNLOAD
+                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_FILE_DOWNLOAD,
                     ],
                     [
                         'label' => $ll . $tableName . '.type.I.1',
                         'value' => 1,
-                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_EXT_DOWNLOAD
+                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_EXT_DOWNLOAD,
                     ],
                     [
                         'label' => $ll . $tableName . '.type.I.2',
                         'value' => 2,
-                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_LINK_DOWNLOAD
+                        'icon' => \Cpsit\CpsDownload\Configuration\SettingsInterface::ICON_IDENTIFIER_LINK_DOWNLOAD,
                     ],
                 ],
                 'fieldWizard' => [
@@ -148,7 +149,7 @@ return [
                 ],
                 'size' => 1,
                 'maxitems' => 1,
-            ]
+            ],
         ],
 
         'title' => [
@@ -160,7 +161,7 @@ return [
                 'size' => 60,
                 'max' => 255,
                 'required' => true,
-            ]
+            ],
         ],
         'teaser' => [
             'exclude' => true,
@@ -171,7 +172,7 @@ return [
                 'rows' => 5,
                 'max' => 255,
                 'enableRichtext' => false,
-            ]
+            ],
         ],
         'accessibility' => [
             'exclude' => true,
@@ -180,9 +181,9 @@ return [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
                 'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ]
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
         ],
 
         'link' => [
@@ -191,8 +192,8 @@ return [
             'config' => [
                 'type' => 'link',
                 'size' => 50,
-                'appearance' => ['browserTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel']
-            ]
+                'appearance' => ['browserTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel'],
+            ],
         ],
 
         'file_ext' => [
@@ -202,7 +203,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['label' => '', 'value' => '']
+                    ['label' => '', 'value' => ''],
                 ],
                 'itemsProcFunc' => \Cpsit\CpsDownload\UserFunctions\SelectItemsProcFunctions::class . '->downloadFileExtensions',
                 'fieldWizard' => [
@@ -212,7 +213,7 @@ return [
                 ],
                 'size' => 1,
                 'maxitems' => 1,
-            ]
+            ],
         ],
 
         'information_date' => [
@@ -232,7 +233,7 @@ return [
         'files' => [
             'label' => $ll . $tableName . '.files',
             'config' => [
-                ### !!! Watch out for fieldName different from columnName
+                //## !!! Watch out for fieldName different from columnName
                 'type' => 'file',
                 'allowed' => implode(',', Cpsit\CpsDownload\Domain\Model\Download::ALLOWED_FILE_FILE_EXTENSIONS),
                 'maxitems' => 1,
@@ -240,7 +241,7 @@ return [
                 'appearance' => [
                     'collapseAll' => true,
                     'expandSingle' => true,
-                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references.addFileReference'
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references.addFileReference',
                 ],
                 // custom configuration for displaying fields in the overlay/reference table
                 // behaves the same as the image field.
@@ -249,26 +250,26 @@ return [
                         '0' => [
                             'showitem' => '
                                 --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
                             'showitem' => '
                                 --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
                             'showitem' => '
                                 --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                         ],
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
                             'showitem' => '
                                 --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette'
-                        ]
+                                --palette--;;filePalette',
+                        ],
                     ],
                 ],
-            ]
+            ],
         ],
         'size' => [
             'exclude' => true,
@@ -305,9 +306,9 @@ return [
                 'suggestOptions' => [
                     'default' => [
                         'minimumCharacters' => 2,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ],
         'categories' => [
             'exclude' => false,
@@ -332,13 +333,13 @@ return [
                     'appearance' => [
                         'maxLevels' => 1,
                         'nonSelectableLevels' => '0',
-                        'expandAll' => false
-                    ]
+                        'expandAll' => false,
+                    ],
                 ],
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
     ],
     'types' => [
@@ -377,6 +378,6 @@ return [
         ],
         'access' => [
             'showitem' => 'starttime, endtime',
-        ]
+        ],
     ],
 ];

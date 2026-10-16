@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Cpsit\CpsDownload\Tests\Functional\Domain\Repository;
 
 /***************************************************************
@@ -60,7 +62,7 @@ class DownloadRepositoryTest extends FunctionalTestCase
 
     public function testFindDemandedFindsDownloadsByPageIds(): void
     {
-        $pages = [1,3];
+        $pages = [1, 3];
         $demand = new DownloadDemand();
         $demand->setPageIds($pages);
         $result = $this->subject->findDemanded($demand);

@@ -14,7 +14,6 @@ use Cpsit\CpsDownload\Domain\Model\Dto\DownloadDemand;
 
 class DownloadDemandTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var DownloadDemand
      */
@@ -36,7 +35,7 @@ class DownloadDemandTest extends \PHPUnit\Framework\TestCase
 
     public function testPagIdsCanBeSet(): void
     {
-        $pages = [1,2];
+        $pages = [1, 2];
         $this->subject->setPageIds($pages);
 
         self::assertSame(

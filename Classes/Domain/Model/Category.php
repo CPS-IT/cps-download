@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Cpsit\CpsDownload\Domain\Model;
@@ -11,12 +12,11 @@ namespace Cpsit\CpsDownload\Domain\Model;
  * of the License, or any later version.
  */
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
-use TYPO3\CMS\Extbase\Annotation as Extbase;
-
 
 class Category extends AbstractEntity
 {
@@ -99,7 +99,7 @@ class Category extends AbstractEntity
     }
 
     /**
-     * @return ObjectStorage
+     * @return ObjectStorage<Download>
      */
     public function getDownloads(): ObjectStorage
     {
@@ -107,7 +107,7 @@ class Category extends AbstractEntity
     }
 
     /**
-     * @param ObjectStorage $downloads
+     * @param ObjectStorage<Download> $downloads
      * @return Category
      */
     public function setDownloads(ObjectStorage $downloads): Category

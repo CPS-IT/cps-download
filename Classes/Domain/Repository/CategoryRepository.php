@@ -13,7 +13,7 @@ namespace Cpsit\CpsDownload\Domain\Repository;
 use Cpsit\CpsDownload\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class CategoryRepository extends Repository
-{
-
-}
+/**
+ * @extends Repository<Category>
+ */
+class CategoryRepository extends Repository {}
